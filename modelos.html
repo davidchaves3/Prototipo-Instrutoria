@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Modelos de E-mail - SENAR/TO</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <header>
+        <h1>Gerenciamento de Modelos de E-mail</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="instrutores.html">Instrutores</a></li>
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="modelos.html">Modelos de E-mail</a></li>
+            <li><a href="status.html">Status de Convites</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Editar Modelo de Convite</h2>
+        <form>
+            <div class="form-group">
+                <label for="titulo">Título do Modelo</label>
+                <input type="text" id="titulo" name="titulo" value="Convite Padrão de Curso"/>
+            </div>
+            <div class="form-group">
+                <label for="assunto">Assunto do E-mail</label>
+                <input type="text" id="assunto" name="assunto" value="Convite para o curso {{nome_curso}}"/>
+            </div>
+            <div class="form-group">
+                <label for="corpo">Corpo do E-mail (HTML)</label>
+                <textarea id="corpo" name="corpo">
+<p>Olá, {{nome_instrutor}},</p>
+<p>Você foi convidado(a) para ministrar o curso <strong>{{nome_curso}}</strong>, previsto para ocorrer em <strong>{{data_curso}}</strong>.</p>
+<p>Confirme sua disponibilidade clicando em um dos botões abaixo:</p>
+<a href="{{link_aceite}}" style="padding: 10px 20px; background: green; color: white;">✅ Aceitar</a>
+<a href="{{link_recusa}}" style="padding: 10px 20px; background: red; color: white;">❌ Recusar</a>
+<p>Atenciosamente,<br>SENAR/TO</p>
+                </textarea>
+            </div>
+            <button type="submit">Salvar Modelo</button>
+        </form>
+    </main>
+</body>
+</html>

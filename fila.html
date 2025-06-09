@@ -68,5 +68,65 @@
   </main>
 
   <script src="nav.js"></script>
+  <script>
+// Ao carregar o DOM, intercepta cliques no botão “Recusar”
+document.addEventListener('DOMContentLoaded', () => {
+  const tbody = document.querySelector('table tbody');
+
+  tbody.addEventListener('click', e => {
+    if (!e.target.classList.contains('decline')) return;
+
+    // Encontra a linha clicada
+    const row = e.target.closest('tr');
+
+    // Remove a linha da posição atual e anexa ao final
+    tbody.removeChild(row);
+    tbody.appendChild(row);
+
+    // Recalcula e atualiza a coluna “Posição”
+    Array.from(tbody.querySelectorAll('tr')).forEach((r, idx) => {
+      r.querySelector('td').textContent = idx + 1;
+    });
+  });
+});
+</script>
+<script>
+// após o script de recusa…
+document.addEventListener('DOMContentLoaded', () => {
+  const tbody = document.querySelector('table tbody');
+  const filtroTreino = document.getElementById('filtro-treinamento');
+  const filtroCidade = document.getElementById('filtro-cidade');
+
+  // Função que faz o filtro das linhas
+  function aplicarFiltro() {
+    const treinoSel = filtroTreino.value;
+    const cidadeSel = filtroCidade.value;
+    Array.from(tbody.querySelectorAll('tr')).forEach(row => {
+      const cols = row.querySelectorAll('td');
+      const instrutor = cols[1].textContent;
+      // Aqui você colocaria, na prática, colunas de curso e cidade reais.
+      // No protótipo estamos usando apenas curso fixo por página,
+      // mas se quiser: adicione <td class="col-treinamento">Treino X</td>  
+      // e <td class="col-cidade">Cidade Y</td> na tabela, e use abaixo:
+      const cursoRow = cols[1].dataset.treinamento || ''; 
+      const cidadeRow = cols[1].dataset.cidade || '';
+
+      // Como nosso protótipo não tem essas colunas, vamos assumir
+      // que todas as linhas “batem” com o filtro de cidade
+      const bateTreino = treinoSel === cursoRow || treinoSel === 'Todos';
+      const bateCidade = cidadeSel === cidadeRow || cidadeSel === 'Todos';
+
+      row.style.display = (bateTreino && bateCidade) ? '' : 'none';
+    });
+  }
+
+  // Caso queira um “Todos” nos selects:
+  filtroTreino.insertAdjacentHTML('afterbegin', '<option>Todos</option>');
+  filtroCidade.insertAdjacentHTML('afterbegin', '<option>Todos</option>');
+
+  filtroTreino.addEventListener('change', aplicarFiltro);
+  filtroCidade.addEventListener('change', aplicarFiltro);
+});
+</script>
 </body>
 </html>

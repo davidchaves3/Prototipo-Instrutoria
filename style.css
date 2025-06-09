@@ -124,3 +124,51 @@ textarea {
 .upload-form {
     margin-bottom: 20px;
 }
+
+/* === Estilos para submenu colapsável === */
+nav ul li.has-submenu {
+  position: relative;
+}
+
+nav ul li.has-submenu .submenu {
+  display: none;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+nav ul li.has-submenu.open .submenu {
+  display: block;
+}
+
+nav ul li.has-submenu .submenu-toggle {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 10px 15px;
+  width: 100%;
+  text-align: left;
+}
+
+nav ul li.has-submenu .submenu-toggle .arrow {
+  float: right;
+  transition: transform 0.2s ease;
+}
+
+nav ul li.has-submenu.open .submenu-toggle .arrow {
+  transform: rotate(90deg);
+}
+
+nav ul li.has-submenu .submenu li a {
+  padding: 10px 30px;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+}
+
+nav ul li.has-submenu .submenu li a:hover {
+  background-color: #28a745;
+}
+

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fila de Convocação – SENAR/TO</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <header><h1>Fila de Convocação</h1></header>
+  <div id="nav-placeholder"></div>
+
+  <main>
+    <h2>Ordem de Chamada</h2>
+    <form class="form-group">
+      <label for="filtro-treinamento">Treinamento:</label>
+      <select id="filtro-treinamento">
+        <option>Operador de Trator Agrícola</option>
+        <option>Gestão de Competências</option>
+      </select>
+    </form>
+    <form class="form-group">
+      <label for="filtro-cidade">Cidade:</label>
+      <select id="filtro-cidade">
+        <option>Palmas - TO</option>
+        <option>Araguaína - TO</option>
+      </select>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Posição</th>
+          <th>Instrutor</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>João da Silva</td>
+          <td>Pendente</td>
+          <td>
+            <!-- Simula recusa e vai para o fim da fila -->
+            <button class="decline">Recusar</button>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Maria Oliveira</td>
+          <td>Disponível</td>
+          <td>
+            <button class="decline">Recusar</button>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Carlos Pereira</td>
+          <td>Disponível</td>
+          <td>
+            <button class="decline">Recusar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <script src="nav.js"></script>
+</body>
+</html>
